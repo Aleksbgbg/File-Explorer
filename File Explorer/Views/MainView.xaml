@@ -7,4 +7,5 @@
 			 xmlns:ViewModels="clr-namespace:FileExplorer.ViewModels"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance ViewModels:MainViewModel}">
+    <ContentControl Caliburn:View.Model="{Binding FolderStructureViewModel}"/>
 </UserControl>

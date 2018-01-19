@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="FileExplorer.Views.FolderStructureView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ViewModels="clr-namespace:FileExplorer.ViewModels"
+             xmlns:FileSystem="clr-namespace:FileExplorer.ViewModels.FileSystem"
+             mc:Ignorable="d"
+			 d:DataContext="{d:DesignInstance ViewModels:FolderStructureViewModel}">
+    <TreeView ItemsSource="{Binding Drives}">
+        <TreeView.Resources>
+            <HierarchicalDataTemplate DataType="{x:Type FileSystem:FolderViewModel}" ItemsSource="{Binding Folders}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="{StaticResource Folder}" Width="15" Height="15"/>
+                    <TextBlock Text="{Binding DisplayName}"/>
+                </StackPanel>
+            </HierarchicalDataTemplate>
+        </TreeView.Resources>
+    </TreeView>
+</UserControl>

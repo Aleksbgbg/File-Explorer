@@ -6,7 +6,11 @@
 
     using Caliburn.Micro;
 
+    using FileExplorer.Services;
+    using FileExplorer.Services.Interfaces;
     using FileExplorer.ViewModels;
+    using FileExplorer.ViewModels.FileSystem;
+    using FileExplorer.ViewModels.FileSystem.Interfaces;
     using FileExplorer.ViewModels.Interfaces;
 
     internal class AppBootstrapper : BootstrapperBase
@@ -21,10 +25,16 @@
         {
             // Register Services
             container.Singleton<IWindowManager, WindowManager>();
+            container.Singleton<IFileSystemService, FileSystemService>();
 
             // Register ViewModels
             container.Singleton<IShellViewModel, ShellViewModel>();
             container.Singleton<IMainViewModel, MainViewModel>();
+            container.Singleton<IFolderStructureViewModel, FolderStructureViewModel>();
+
+            // FileSystem ViewModels
+            container.PerRequest<IFileViewModel, FileViewModel>();
+            container.PerRequest<IFolderViewModel, FolderViewModel>();
         }
 
         protected override object GetInstance(Type service, string key) => container.GetInstance(service, key);

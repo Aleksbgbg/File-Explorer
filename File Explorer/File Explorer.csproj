@@ -72,6 +72,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\FileSystem\FolderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FolderStructureView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -80,6 +88,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Services\FileSystemService.cs" />
+    <Compile Include="Services\Interfaces\IFileSystemService.cs" />
+    <Compile Include="ViewModels\FileSystem\FileViewModel.cs" />
+    <Compile Include="ViewModels\FileSystem\FolderViewModel.cs" />
+    <Compile Include="ViewModels\FileSystem\Interfaces\IFileViewModel.cs" />
+    <Compile Include="ViewModels\FileSystem\Interfaces\IFolderViewModel.cs" />
+    <Compile Include="ViewModels\FileSystem\Interfaces\INodeViewModel.cs" />
+    <Compile Include="ViewModels\FileSystem\NodeViewModel.cs" />
+    <Compile Include="ViewModels\FolderStructureViewModel.cs" />
+    <Compile Include="ViewModels\Interfaces\IFolderStructureViewModel.cs" />
+    <Compile Include="Views\FolderStructureView.xaml.cs">
+      <DependentUpon>FolderStructureView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -157,12 +178,15 @@
     <Folder Include="Converters\" />
     <Folder Include="Extensions\" />
     <Folder Include="Helpers\" />
-    <Folder Include="Images\" />
-    <Folder Include="Models\" />
-    <Folder Include="Services\Interfaces\" />
+    <Folder Include="Models\FileSystem\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\File.png" />
+    <Resource Include="Images\Folder Open.png" />
+    <Resource Include="Images\Folder.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.2.0.0\build\netstandard1.4\Fody.targets" Condition="Exists('..\packages\Fody.2.0.0\build\netstandard1.4\Fody.targets')" />
