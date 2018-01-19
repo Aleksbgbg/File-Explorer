@@ -1,0 +1,11 @@
+﻿<Window x:Class="FileExplorer.Views.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:Caliburn="http://www.caliburnproject.org"
+		xmlns:ViewModels="clr-namespace:FileExplorer.ViewModels"
+		mc:Ignorable="d"
+		d:DataContext="{d:DesignInstance ViewModels:ShellViewModel}">
+		<ContentControl Caliburn:View.Model="{Binding MainViewModel}"/>
+</Window>
