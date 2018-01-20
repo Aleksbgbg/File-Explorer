@@ -1,38 +1,48 @@
 ﻿namespace FileExplorer.Services
 {
+    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using Caliburn.Micro;
 
+    using FileExplorer.Factories.Interfaces;
     using FileExplorer.Services.Interfaces;
     using FileExplorer.ViewModels.FileSystem.Interfaces;
 
     internal class FileSystemService : IFileSystemService
     {
-        public IEnumerable<IFolderViewModel> GetRootDrives()
+        private readonly IFolderFactory folderFactory;
+
+        public FileSystemService(IFolderFactory folderFactory)
         {
-            return DriveInfo.GetDrives().Select(rootDrive => MakeFolder(rootDrive.Name));
+            this.folderFactory = folderFactory;
+        }
+
+        public IEnumerable<IDriveViewModel> GetDrives()
+        {
+            return DriveInfo.GetDrives().Select(folderFactory.MakeDrive);
         }
 
         public IEnumerable<IFolderViewModel> GetFolders(string path)
         {
-            try
-            {
-                return Directory.GetDirectories(path).Select(MakeFolder);
-            }
-            catch
-            {
-                return new IFolderViewModel[0];
-            }
+            return GetDirectories(path).Select(folderFactory.MakeFolder);
         }
 
-        private static IFolderViewModel MakeFolder(string path)
+        public int GetDirectoryLength(string path)
         {
-            IFolderViewModel folderViewModel = IoC.Get<IFolderViewModel>();
-            folderViewModel.Path = path;
+            return GetDirectories(path).Length;
+        }
 
-            return folderViewModel;
+        private static string[] GetDirectories(string path)
+        {
+            try
+            {
+                return Directory.GetDirectories(path);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return new string[0];
+            }
         }
     }
 }

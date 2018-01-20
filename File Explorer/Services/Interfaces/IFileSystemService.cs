@@ -6,8 +6,10 @@
 
     internal interface IFileSystemService
     {
-        IEnumerable<IFolderViewModel> GetRootDrives();
+        IEnumerable<IDriveViewModel> GetDrives();
 
         IEnumerable<IFolderViewModel> GetFolders(string path);
+
+        int GetDirectoryLength(string path);
     }
 }
