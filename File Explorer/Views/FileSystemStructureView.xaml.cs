@@ -1,7 +1,7 @@
 ﻿namespace FileExplorer.Views
 {
-    public partial class FolderStructureView
+    public partial class FileSystemStructureView
     {
-        public FolderStructureView() => InitializeComponent();
+        public FileSystemStructureView() => InitializeComponent();
     }
 }

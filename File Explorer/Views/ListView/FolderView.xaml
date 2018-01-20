@@ -7,7 +7,7 @@
                 <Image.Style>
                     <Style TargetType="Image" BasedOn="{StaticResource {x:Type Image}}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Model.IsHidden}" Value="True">
+                            <DataTrigger Binding="{Binding Folder.IsHidden}" Value="True">
                                 <Setter Property="Opacity" Value="0.5"/>
                             </DataTrigger>
                         </Style.Triggers>

@@ -37,6 +37,7 @@
             container.Singleton<IWindowManager, WindowManager>();
             container.Singleton<IFileSystemService, FileSystemService>();
             container.Singleton<IFileSystemFactory, FileSystemFactory>();
+            container.Singleton<IFileIconService, FileIconService>();
 
             // Register ViewModels
             container.Singleton<IShellViewModel, ShellViewModel>();

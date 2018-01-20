@@ -6,9 +6,9 @@
     using FileExplorer.ViewModels.Interfaces;
     using FileExplorer.ViewModels.TreeView.Interfaces;
 
-    internal class FolderStructureViewModel : ViewModelBase, IFolderStructureViewModel
+    internal class FileSystemStructureViewModel : ViewModelBase, IFileSystemStructureViewModel
     {
-        public FolderStructureViewModel(IFileSystemService fileSystemService)
+        public FileSystemStructureViewModel(IFileSystemService fileSystemService)
         {
             Drives = new BindableCollection<IDriveViewModel>(fileSystemService.GetDrives());
         }

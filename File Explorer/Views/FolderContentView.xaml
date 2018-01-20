@@ -1,10 +1,10 @@
-﻿<UserControl x:Class="FileExplorer.Views.FolderView"
+﻿<UserControl x:Class="FileExplorer.Views.FolderContentView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:ViewModels="clr-namespace:FileExplorer.ViewModels"
-             xmlns:ListView="clr-namespace:FileExplorer.ViewModels.ListView"
+             xmlns:Caliburn="http://www.caliburnproject.org"
              mc:Ignorable="d"
 			 d:DataContext="{d:DesignInstance ViewModels:FolderContentViewModel}">
     <ListBox ItemsSource="{Binding Entries}">
@@ -17,6 +17,10 @@
             </ResourceDictionary>
         </ListBox.Resources>
         
-        
+        <ListBox.ItemContainerStyle>
+            <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                <Setter Property="Caliburn:Message.Attach" Value="[Event MouseDoubleClick] = [DoubleClick]"/>
+            </Style>
+        </ListBox.ItemContainerStyle>
     </ListBox>
 </UserControl>

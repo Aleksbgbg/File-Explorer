@@ -55,6 +55,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Caliburn.Micro.3.2.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -88,11 +89,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\FolderStructureView.xaml">
+    <Page Include="Views\FileSystemStructureView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\FolderView.xaml">
+    <Page Include="Views\FolderContentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -104,13 +105,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Converters\PathToImageConverter.cs" />
     <Compile Include="Factories\FileSystemFactory.cs" />
     <Compile Include="Factories\Interfaces\IFileSystemFactory.cs" />
     <Compile Include="Models\Drive.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\FileSystemObject.cs" />
     <Compile Include="Models\Folder.cs" />
+    <Compile Include="Services\FileIconService.cs" />
     <Compile Include="Services\FileSystemService.cs" />
+    <Compile Include="Services\Interfaces\IFileIconService.cs" />
     <Compile Include="Services\Interfaces\IFileSystemService.cs" />
     <Compile Include="ViewModels\ListView\FileSystemObjectViewModel.cs" />
     <Compile Include="ViewModels\ListView\FileViewModel.cs" />
@@ -122,15 +126,15 @@
     <Compile Include="ViewModels\TreeView\FolderViewModel.cs" />
     <Compile Include="ViewModels\TreeView\Interfaces\IDriveViewModel.cs" />
     <Compile Include="ViewModels\TreeView\Interfaces\IFolderViewModel.cs" />
-    <Compile Include="ViewModels\FolderStructureViewModel.cs" />
-    <Compile Include="ViewModels\FolderViewModel.cs" />
-    <Compile Include="ViewModels\Interfaces\IFolderStructureViewModel.cs" />
-    <Compile Include="ViewModels\Interfaces\IFolderViewModel.cs" />
-    <Compile Include="Views\FolderStructureView.xaml.cs">
-      <DependentUpon>FolderStructureView.xaml</DependentUpon>
+    <Compile Include="ViewModels\FileSystemStructureViewModel.cs" />
+    <Compile Include="ViewModels\FolderContentViewModel.cs" />
+    <Compile Include="ViewModels\Interfaces\IFileSystemStructureViewModel.cs" />
+    <Compile Include="ViewModels\Interfaces\IFolderContentViewModel.cs" />
+    <Compile Include="Views\FileSystemStructureView.xaml.cs">
+      <DependentUpon>FileSystemStructureView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\FolderView.xaml.cs">
-      <DependentUpon>FolderView.xaml</DependentUpon>
+    <Compile Include="Views\FolderContentView.xaml.cs">
+      <DependentUpon>FolderContentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -206,7 +210,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Converters\" />
     <Folder Include="Extensions\" />
     <Folder Include="Helpers\" />
   </ItemGroup>

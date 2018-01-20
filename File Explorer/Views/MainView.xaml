@@ -14,7 +14,7 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <ContentControl Caliburn:View.Model="{Binding FolderStructureViewModel}"/>
+        <ContentControl Caliburn:View.Model="{Binding FileSystemStructureViewModel}"/>
         
         <GridSplitter Grid.Column="1"/>
         

@@ -1,7 +1,7 @@
 ﻿namespace FileExplorer.Views
 {
-    public partial class FolderView
+    public partial class FolderContentView
     {
-        public FolderView() => InitializeComponent();
+        public FolderContentView() => InitializeComponent();
     }
 }

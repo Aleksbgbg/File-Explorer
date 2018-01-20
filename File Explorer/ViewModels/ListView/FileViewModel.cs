@@ -1,5 +1,7 @@
 ﻿namespace FileExplorer.ViewModels.ListView
 {
+    using System.Diagnostics;
+
     using FileExplorer.Models;
     using FileExplorer.ViewModels.ListView.Interfaces;
 
@@ -24,6 +26,11 @@
             get => file;
 
             set => File = (File)value;
+        }
+
+        public override void DoubleClick()
+        {
+            Process.Start(File.Path);
         }
     }
 }

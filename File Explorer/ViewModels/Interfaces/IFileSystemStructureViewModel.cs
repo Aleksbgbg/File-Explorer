@@ -1,6 +1,6 @@
 ﻿namespace FileExplorer.ViewModels.Interfaces
 {
-    internal interface IFolderStructureViewModel : IViewModelBase
+    internal interface IFileSystemStructureViewModel : IViewModelBase
     {
     }
 }
