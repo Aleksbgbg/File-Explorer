@@ -21,6 +21,6 @@
 
         public string Path { get; }
 
-        public virtual bool IsHidden { get; }
+        public bool IsHidden { get; }
     }
 }

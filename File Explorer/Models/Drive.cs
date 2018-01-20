@@ -7,7 +7,5 @@
         internal Drive(DriveInfo driveInfo) : base($"[{driveInfo.Name.TrimEnd('\\')}] {driveInfo.VolumeLabel}", driveInfo.Name)
         {
         }
-
-        public override bool IsHidden => false;
     }
 }
