@@ -8,7 +8,7 @@
     using IListViewFolder = FileExplorer.ViewModels.ListView.Interfaces.IFolderViewModel;
     using ITreeViewFolder = FileExplorer.ViewModels.TreeView.Interfaces.IFolderViewModel;
 
-    internal interface IFolderFactory
+    internal interface IFileSystemFactory
     {
         #region TreeView
 

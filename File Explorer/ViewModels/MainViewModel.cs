@@ -4,14 +4,14 @@
 
     internal class MainViewModel : ViewModelBase, IMainViewModel
     {
-        public MainViewModel(IFolderStructureViewModel folderStructureViewModel, IFolderViewModel folderViewModel)
+        public MainViewModel(IFileSystemStructureViewModel fileSystemStructureViewModel, IFolderContentViewModel folderContentViewModel)
         {
-            FolderStructureViewModel = folderStructureViewModel;
-            FolderViewModel = folderViewModel;
+            FileSystemStructureViewModel = fileSystemStructureViewModel;
+            FolderContentViewModel = folderContentViewModel;
         }
 
-        public IFolderStructureViewModel FolderStructureViewModel { get; }
+        public IFileSystemStructureViewModel FileSystemStructureViewModel { get; }
 
-        public IFolderViewModel FolderViewModel { get; }
+        public IFolderContentViewModel FolderContentViewModel { get; }
     }
 }

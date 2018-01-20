@@ -36,13 +36,13 @@
             container.Singleton<IEventAggregator, EventAggregator>();
             container.Singleton<IWindowManager, WindowManager>();
             container.Singleton<IFileSystemService, FileSystemService>();
-            container.Singleton<IFolderFactory, FolderFactory>();
+            container.Singleton<IFileSystemFactory, FileSystemFactory>();
 
             // Register ViewModels
             container.Singleton<IShellViewModel, ShellViewModel>();
             container.Singleton<IMainViewModel, MainViewModel>();
-            container.Singleton<IFolderStructureViewModel, FolderStructureViewModel>();
-            container.Singleton<ViewModels.Interfaces.IFolderViewModel, ViewModels.FolderViewModel>();
+            container.Singleton<IFileSystemStructureViewModel, FileSystemStructureViewModel>();
+            container.Singleton<ViewModels.Interfaces.IFolderContentViewModel, ViewModels.FolderContentViewModel>();
 
             // FileSystem ViewModels
             container.PerRequest<IDriveViewModel, DriveViewModel>();

@@ -6,7 +6,7 @@
              xmlns:ViewModels="clr-namespace:FileExplorer.ViewModels"
              xmlns:ListView="clr-namespace:FileExplorer.ViewModels.ListView"
              mc:Ignorable="d"
-			 d:DataContext="{d:DesignInstance ViewModels:FolderViewModel}">
+			 d:DataContext="{d:DesignInstance ViewModels:FolderContentViewModel}">
     <ListBox ItemsSource="{Binding Entries}">
         <ListBox.Resources>
             <ResourceDictionary>

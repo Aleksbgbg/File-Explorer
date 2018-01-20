@@ -63,9 +63,23 @@
             }
         }
 
-        public void Open()
+        private bool isSelected;
+        public bool IsSelected
         {
-            eventAggregator.BeginPublishOnUIThread(Folder);
+            get => isSelected;
+
+            set
+            {
+                if (isSelected == value) return;
+
+                isSelected = value;
+                NotifyOfPropertyChange(() => IsSelected);
+
+                if (isSelected)
+                {
+                    eventAggregator.BeginPublishOnUIThread(Folder);
+                }
+            }
         }
 
         private void AddPlaceholderFolder()

@@ -13,7 +13,7 @@
     using IListViewFolder = FileExplorer.ViewModels.ListView.Interfaces.IFolderViewModel;
     using ITreeViewFolder = FileExplorer.ViewModels.TreeView.Interfaces.IFolderViewModel;
 
-    internal class FolderFactory : IFolderFactory
+    internal class FileSystemFactory : IFileSystemFactory
     {
         public IDriveViewModel MakeDrive(DriveInfo driveInfo)
         {

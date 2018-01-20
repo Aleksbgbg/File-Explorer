@@ -104,8 +104,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Factories\FolderFactory.cs" />
-    <Compile Include="Factories\Interfaces\IFolderFactory.cs" />
+    <Compile Include="Factories\FileSystemFactory.cs" />
+    <Compile Include="Factories\Interfaces\IFileSystemFactory.cs" />
     <Compile Include="Models\Drive.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\FileSystemObject.cs" />

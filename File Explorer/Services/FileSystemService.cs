@@ -14,26 +14,26 @@
 
     internal class FileSystemService : IFileSystemService
     {
-        private readonly IFolderFactory folderFactory;
+        private readonly IFileSystemFactory fileSystemFactory;
 
-        public FileSystemService(IFolderFactory folderFactory)
+        public FileSystemService(IFileSystemFactory fileSystemFactory)
         {
-            this.folderFactory = folderFactory;
+            this.fileSystemFactory = fileSystemFactory;
         }
 
         public IEnumerable<IDriveViewModel> GetDrives()
         {
-            return DriveInfo.GetDrives().Where(drive => drive.IsReady && drive.VolumeLabel != null).Select(folderFactory.MakeDrive);
+            return DriveInfo.GetDrives().Where(drive => drive.IsReady && drive.VolumeLabel != null).Select(fileSystemFactory.MakeDrive);
         }
 
         public IEnumerable<IFolderViewModel> GetFolders(string path)
         {
-            return GetDirectories(path).Select(folderFactory.MakeTreeViewFolder);
+            return GetDirectories(path).Select(fileSystemFactory.MakeTreeViewFolder);
         }
 
         public IEnumerable<IFileSystemObjectViewModel> GetFileSystemObjects(string path)
         {
-            return GetDirectories(path).Select(folderFactory.MakeListViewFolder).Concat<IFileSystemObjectViewModel>(GetFiles(path).Select(folderFactory.MakeFile));
+            return GetDirectories(path).Select(fileSystemFactory.MakeListViewFolder).Concat<IFileSystemObjectViewModel>(GetFiles(path).Select(fileSystemFactory.MakeFile));
         }
 
         public int GetDirectoryLength(string path)

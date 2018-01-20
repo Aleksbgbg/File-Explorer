@@ -6,7 +6,7 @@
              xmlns:ViewModels="clr-namespace:FileExplorer.ViewModels"
              xmlns:Caliburn="http://www.caliburnproject.org"
              mc:Ignorable="d"
-			 d:DataContext="{d:DesignInstance ViewModels:FolderStructureViewModel}">
+			 d:DataContext="{d:DesignInstance ViewModels:FileSystemStructureViewModel}">
     <TreeView ItemsSource="{Binding Drives}" VirtualizingStackPanel.IsVirtualizing="True" VirtualizingStackPanel.VirtualizationMode="Recycling">
         <TreeView.Resources>
             <ResourceDictionary>
@@ -20,8 +20,7 @@
         <TreeView.ItemContainerStyle>
             <Style TargetType="TreeViewItem" BasedOn="{StaticResource {x:Type TreeViewItem}}">
                 <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}"/>
-                
-                <Setter Property="Caliburn:Message.Attach" Value="[Event MouseDoubleClick] = [Open]"/>
+                <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
             </Style>
         </TreeView.ItemContainerStyle>
     </TreeView>

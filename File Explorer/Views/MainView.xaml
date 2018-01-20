@@ -18,6 +18,6 @@
         
         <GridSplitter Grid.Column="1"/>
         
-        <ContentControl Grid.Column="2" Caliburn:View.Model="{Binding FolderViewModel}"/>
+        <ContentControl Grid.Column="2" Caliburn:View.Model="{Binding FolderContentViewModel}"/>
     </Grid>
 </UserControl>

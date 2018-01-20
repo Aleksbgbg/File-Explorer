@@ -4,15 +4,14 @@
 
     using FileExplorer.Models;
     using FileExplorer.Services.Interfaces;
+    using FileExplorer.ViewModels.Interfaces;
     using FileExplorer.ViewModels.ListView.Interfaces;
 
-    using IFolderViewModel = FileExplorer.ViewModels.Interfaces.IFolderViewModel;
-
-    internal class FolderViewModel : ViewModelBase, IFolderViewModel, IHandle<Folder>
+    internal class FolderContentViewModel : ViewModelBase, IFolderContentViewModel, IHandle<Folder>
     {
         private readonly IFileSystemService fileSystemService;
 
-        public FolderViewModel(IEventAggregator eventAggreagtor, IFileSystemService fileSystemService)
+        public FolderContentViewModel(IEventAggregator eventAggreagtor, IFileSystemService fileSystemService)
         {
             eventAggreagtor.Subscribe(this);
 
