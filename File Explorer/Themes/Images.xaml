@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <BitmapImage x:Key="Drive" UriSource="/Images/Hard Drive.png"/>
     <BitmapImage x:Key="Folder" UriSource="/Images/Folder.png"/>
-    <BitmapImage x:Key="Folder Open" UriSource="/Images/Folder Open.png"/>
+    <BitmapImage x:Key="FolderOpen" UriSource="/Images/Folder Open.png"/>
     <BitmapImage x:Key="File" UriSource="/Images/File.png"/>
 </ResourceDictionary>
