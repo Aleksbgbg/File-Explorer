@@ -2,12 +2,11 @@
 {
     using Caliburn.Micro;
 
+    using FileExplorer.Models;
     using FileExplorer.Services.Interfaces;
     using FileExplorer.ViewModels.FileSystem.Interfaces;
 
-    using IOPath = System.IO.Path;
-
-    internal class FolderViewModel : NodeViewModel, IFolderViewModel
+    internal class FolderViewModel : ViewModelBase, IFolderViewModel
     {
         private readonly IFileSystemService fileSystemService;
 
@@ -16,15 +15,56 @@
             this.fileSystemService = fileSystemService;
         }
 
-        private IObservableCollection<IFolderViewModel> folders;
-        public IObservableCollection<IFolderViewModel> Folders => folders ?? (folders = new BindableCollection<IFolderViewModel>(fileSystemService.GetFolders(Path)));
+        public override string DisplayName => Folder.Name;
 
-        public override string DisplayName
+        public IObservableCollection<IFolderViewModel> Folders { get; } = new BindableCollection<IFolderViewModel>();
+
+        private Folder folder;
+        public virtual Folder Folder
         {
-            get => IOPath.GetFileName(Path);
+            get => folder;
 
             set
             {
+                if (folder == value) return;
+
+                folder = value;
+                NotifyOfPropertyChange(() => Folder);
+
+                AddPlaceholderFolder();
+            }
+        }
+
+        private bool isExpanded;
+        public bool IsExpanded
+        {
+            get => isExpanded;
+
+            set
+            {
+                if (isExpanded == value) return;
+
+                isExpanded = value;
+                NotifyOfPropertyChange(() => IsExpanded);
+
+                Folders.Clear();
+
+                if (isExpanded)
+                {
+                    Folders.AddRange(fileSystemService.GetFolders(Folder.Path));
+                }
+                else
+                {
+                    AddPlaceholderFolder();
+                }
+            }
+        }
+
+        private void AddPlaceholderFolder()
+        {
+            if (fileSystemService.GetDirectoryLength(folder.Path) > 0)
+            {
+                Folders.Add(null);
             }
         }
     }

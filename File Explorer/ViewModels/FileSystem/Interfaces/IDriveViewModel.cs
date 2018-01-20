@@ -1,6 +1,6 @@
 ﻿namespace FileExplorer.ViewModels.FileSystem.Interfaces
 {
-    internal interface IFileViewModel : INodeViewModel
+    internal interface IDriveViewModel : IFolderViewModel
     {
     }
 }
