@@ -72,15 +72,27 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\FileSystem\DriveView.xaml">
+    <Page Include="Views\ListView\FileView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\FileSystem\FolderView.xaml">
+    <Page Include="Views\ListView\FolderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TreeView\DriveView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TreeView\FolderView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\FolderStructureView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FolderView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -95,17 +107,30 @@
     <Compile Include="Factories\FolderFactory.cs" />
     <Compile Include="Factories\Interfaces\IFolderFactory.cs" />
     <Compile Include="Models\Drive.cs" />
+    <Compile Include="Models\File.cs" />
+    <Compile Include="Models\FileSystemObject.cs" />
     <Compile Include="Models\Folder.cs" />
     <Compile Include="Services\FileSystemService.cs" />
     <Compile Include="Services\Interfaces\IFileSystemService.cs" />
-    <Compile Include="ViewModels\FileSystem\DriveViewModel.cs" />
-    <Compile Include="ViewModels\FileSystem\FolderViewModel.cs" />
-    <Compile Include="ViewModels\FileSystem\Interfaces\IDriveViewModel.cs" />
-    <Compile Include="ViewModels\FileSystem\Interfaces\IFolderViewModel.cs" />
+    <Compile Include="ViewModels\ListView\FileSystemObjectViewModel.cs" />
+    <Compile Include="ViewModels\ListView\FileViewModel.cs" />
+    <Compile Include="ViewModels\ListView\FolderViewModel.cs" />
+    <Compile Include="ViewModels\ListView\Interfaces\IFileSystemObjectViewModel.cs" />
+    <Compile Include="ViewModels\ListView\Interfaces\IFileViewModel.cs" />
+    <Compile Include="ViewModels\ListView\Interfaces\IFolderViewModel.cs" />
+    <Compile Include="ViewModels\TreeView\DriveViewModel.cs" />
+    <Compile Include="ViewModels\TreeView\FolderViewModel.cs" />
+    <Compile Include="ViewModels\TreeView\Interfaces\IDriveViewModel.cs" />
+    <Compile Include="ViewModels\TreeView\Interfaces\IFolderViewModel.cs" />
     <Compile Include="ViewModels\FolderStructureViewModel.cs" />
+    <Compile Include="ViewModels\FolderViewModel.cs" />
     <Compile Include="ViewModels\Interfaces\IFolderStructureViewModel.cs" />
+    <Compile Include="ViewModels\Interfaces\IFolderViewModel.cs" />
     <Compile Include="Views\FolderStructureView.xaml.cs">
       <DependentUpon>FolderStructureView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FolderView.xaml.cs">
+      <DependentUpon>FolderView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>

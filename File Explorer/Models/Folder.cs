@@ -1,26 +1,13 @@
 ﻿namespace FileExplorer.Models
 {
-    using System.IO;
-
-    using IOPath = System.IO.Path;
-
-    internal class Folder
+    internal class Folder : FileSystemObject
     {
-        internal Folder(string path) : this(IOPath.GetFileName(path), path)
+        internal Folder(string path) : base(path)
         {
         }
 
-        protected Folder(string name, string path)
+        protected Folder(string name, string path) : base(name, path)
         {
-            Name = name;
-            Path = path;
-            IsHidden = new DirectoryInfo(path).Attributes.HasFlag(FileAttributes.Hidden);
         }
-
-        public string Name { get; }
-
-        public string Path { get; }
-
-        public virtual bool IsHidden { get; }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace FileExplorer.ViewModels.FileSystem.Interfaces
+﻿namespace FileExplorer.ViewModels.TreeView.Interfaces
 {
     using FileExplorer.Models;
     using FileExplorer.ViewModels.Interfaces;

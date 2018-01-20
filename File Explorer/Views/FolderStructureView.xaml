@@ -4,14 +4,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:ViewModels="clr-namespace:FileExplorer.ViewModels"
+             xmlns:Caliburn="http://www.caliburnproject.org"
              mc:Ignorable="d"
 			 d:DataContext="{d:DesignInstance ViewModels:FolderStructureViewModel}">
     <TreeView ItemsSource="{Binding Drives}" VirtualizingStackPanel.IsVirtualizing="True" VirtualizingStackPanel.VirtualizationMode="Recycling">
         <TreeView.Resources>
             <ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
-                    <ResourceDictionary Source="FileSystem/DriveView.xaml"/>
-                    <ResourceDictionary Source="FileSystem/FolderView.xaml"/>
+                    <ResourceDictionary Source="/Views/TreeView/DriveView.xaml"/>
+                    <ResourceDictionary Source="/Views/TreeView/FolderView.xaml"/>
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </TreeView.Resources>
@@ -19,6 +20,8 @@
         <TreeView.ItemContainerStyle>
             <Style TargetType="TreeViewItem" BasedOn="{StaticResource {x:Type TreeViewItem}}">
                 <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}"/>
+                
+                <Setter Property="Caliburn:Message.Attach" Value="[Event MouseDoubleClick] = [Open]"/>
             </Style>
         </TreeView.ItemContainerStyle>
     </TreeView>

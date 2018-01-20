@@ -7,7 +7,10 @@
 
     using FileExplorer.Factories.Interfaces;
     using FileExplorer.Services.Interfaces;
-    using FileExplorer.ViewModels.FileSystem.Interfaces;
+    using FileExplorer.ViewModels.ListView.Interfaces;
+    using FileExplorer.ViewModels.TreeView.Interfaces;
+
+    using IFolderViewModel = FileExplorer.ViewModels.TreeView.Interfaces.IFolderViewModel;
 
     internal class FileSystemService : IFileSystemService
     {
@@ -25,7 +28,12 @@
 
         public IEnumerable<IFolderViewModel> GetFolders(string path)
         {
-            return GetDirectories(path).Select(folderFactory.MakeFolder);
+            return GetDirectories(path).Select(folderFactory.MakeTreeViewFolder);
+        }
+
+        public IEnumerable<IFileSystemObjectViewModel> GetFileSystemObjects(string path)
+        {
+            return GetDirectories(path).Select(folderFactory.MakeListViewFolder).Concat<IFileSystemObjectViewModel>(GetFiles(path).Select(folderFactory.MakeFile));
         }
 
         public int GetDirectoryLength(string path)
@@ -35,9 +43,19 @@
 
         private static string[] GetDirectories(string path)
         {
+            return GetFileSystemObjects(path, Directory.GetDirectories);
+        }
+
+        private static string[] GetFiles(string path)
+        {
+            return GetFileSystemObjects(path, Directory.GetFiles);
+        }
+
+        private static string[] GetFileSystemObjects(string path, Func<string, string[]> method)
+        {
             try
             {
-                return Directory.GetDirectories(path);
+                return method(path);
             }
             catch (UnauthorizedAccessException)
             {

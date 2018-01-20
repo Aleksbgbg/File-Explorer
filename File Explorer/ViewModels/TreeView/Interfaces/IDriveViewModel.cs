@@ -1,4 +1,4 @@
-﻿namespace FileExplorer.ViewModels.FileSystem.Interfaces
+﻿namespace FileExplorer.ViewModels.TreeView.Interfaces
 {
     internal interface IDriveViewModel : IFolderViewModel
     {

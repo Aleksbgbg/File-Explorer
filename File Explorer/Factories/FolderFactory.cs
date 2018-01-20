@@ -6,7 +6,12 @@
 
     using FileExplorer.Factories.Interfaces;
     using FileExplorer.Models;
-    using FileExplorer.ViewModels.FileSystem.Interfaces;
+    using FileExplorer.ViewModels.ListView.Interfaces;
+    using FileExplorer.ViewModels.TreeView.Interfaces;
+
+    using File = FileExplorer.Models.File;
+    using IListViewFolder = FileExplorer.ViewModels.ListView.Interfaces.IFolderViewModel;
+    using ITreeViewFolder = FileExplorer.ViewModels.TreeView.Interfaces.IFolderViewModel;
 
     internal class FolderFactory : IFolderFactory
     {
@@ -18,10 +23,26 @@
             return driveViewModel;
         }
 
-        public IFolderViewModel MakeFolder(string path)
+        public ITreeViewFolder MakeTreeViewFolder(string path)
         {
-            IFolderViewModel folderViewModel = IoC.Get<IFolderViewModel>();
+            ITreeViewFolder folderViewModel = IoC.Get<ITreeViewFolder>();
             folderViewModel.Folder = new Folder(path);
+
+            return folderViewModel;
+        }
+
+        public IFileViewModel MakeFile(string path)
+        {
+            IFileViewModel fileViewModel = IoC.Get<IFileViewModel>();
+            fileViewModel.Model = new File(path);
+
+            return fileViewModel;
+        }
+
+        public IListViewFolder MakeListViewFolder(string path)
+        {
+            IListViewFolder folderViewModel = IoC.Get<IListViewFolder>();
+            folderViewModel.Model = new Folder(path);
 
             return folderViewModel;
         }

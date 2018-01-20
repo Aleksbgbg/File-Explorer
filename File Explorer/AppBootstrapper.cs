@@ -11,9 +11,16 @@
     using FileExplorer.Services;
     using FileExplorer.Services.Interfaces;
     using FileExplorer.ViewModels;
-    using FileExplorer.ViewModels.FileSystem;
-    using FileExplorer.ViewModels.FileSystem.Interfaces;
     using FileExplorer.ViewModels.Interfaces;
+    using FileExplorer.ViewModels.ListView;
+    using FileExplorer.ViewModels.ListView.Interfaces;
+    using FileExplorer.ViewModels.TreeView;
+    using FileExplorer.ViewModels.TreeView.Interfaces;
+
+    using ListViewFolder = FileExplorer.ViewModels.ListView.FolderViewModel;
+    using TreeViewFolder = FileExplorer.ViewModels.TreeView.FolderViewModel;
+    using IListViewFolder = FileExplorer.ViewModels.ListView.Interfaces.IFolderViewModel;
+    using ITreeViewFolder = FileExplorer.ViewModels.TreeView.Interfaces.IFolderViewModel;
 
     internal class AppBootstrapper : BootstrapperBase
     {
@@ -26,6 +33,7 @@
         protected override void Configure()
         {
             // Register Services
+            container.Singleton<IEventAggregator, EventAggregator>();
             container.Singleton<IWindowManager, WindowManager>();
             container.Singleton<IFileSystemService, FileSystemService>();
             container.Singleton<IFolderFactory, FolderFactory>();
@@ -34,10 +42,14 @@
             container.Singleton<IShellViewModel, ShellViewModel>();
             container.Singleton<IMainViewModel, MainViewModel>();
             container.Singleton<IFolderStructureViewModel, FolderStructureViewModel>();
+            container.Singleton<ViewModels.Interfaces.IFolderViewModel, ViewModels.FolderViewModel>();
 
             // FileSystem ViewModels
             container.PerRequest<IDriveViewModel, DriveViewModel>();
-            container.PerRequest<IFolderViewModel, FolderViewModel>();
+            container.PerRequest<ITreeViewFolder, TreeViewFolder>();
+
+            container.PerRequest<IFileViewModel, FileViewModel>();
+            container.PerRequest<IListViewFolder, ListViewFolder>();
         }
 
         protected override object GetInstance(Type service, string key) => container.GetInstance(service, key);

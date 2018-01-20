@@ -1,17 +1,20 @@
-﻿namespace FileExplorer.ViewModels.FileSystem
+﻿namespace FileExplorer.ViewModels.TreeView
 {
     using Caliburn.Micro;
 
     using FileExplorer.Models;
     using FileExplorer.Services.Interfaces;
-    using FileExplorer.ViewModels.FileSystem.Interfaces;
+    using FileExplorer.ViewModels.TreeView.Interfaces;
 
     internal class FolderViewModel : ViewModelBase, IFolderViewModel
     {
+        private readonly IEventAggregator eventAggregator;
+
         private readonly IFileSystemService fileSystemService;
 
-        public FolderViewModel(IFileSystemService fileSystemService)
+        public FolderViewModel(IEventAggregator eventAggregator, IFileSystemService fileSystemService)
         {
+            this.eventAggregator = eventAggregator;
             this.fileSystemService = fileSystemService;
         }
 
@@ -58,6 +61,11 @@
                     AddPlaceholderFolder();
                 }
             }
+        }
+
+        public void Open()
+        {
+            eventAggregator.BeginPublishOnUIThread(Folder);
         }
 
         private void AddPlaceholderFolder()

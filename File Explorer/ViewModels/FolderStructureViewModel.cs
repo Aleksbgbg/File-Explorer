@@ -3,8 +3,8 @@
     using Caliburn.Micro;
 
     using FileExplorer.Services.Interfaces;
-    using FileExplorer.ViewModels.FileSystem.Interfaces;
     using FileExplorer.ViewModels.Interfaces;
+    using FileExplorer.ViewModels.TreeView.Interfaces;
 
     internal class FolderStructureViewModel : ViewModelBase, IFolderStructureViewModel
     {
