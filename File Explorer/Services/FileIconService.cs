@@ -23,6 +23,6 @@
         }
 
         [DllImport("shell32.dll")]
-        public static extern IntPtr SHGetFileInfo(string filePath, uint fileAttributes, ref IntPtr shellFileInfoPointer, uint fileSizeInfo, uint flags);
+        private static extern IntPtr SHGetFileInfo(string filePath, uint fileAttributes, ref IntPtr shellFileInfoPointer, uint fileSizeInfo, uint flags);
     }
 }
