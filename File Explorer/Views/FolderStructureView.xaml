@@ -4,17 +4,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:ViewModels="clr-namespace:FileExplorer.ViewModels"
-             xmlns:FileSystem="clr-namespace:FileExplorer.ViewModels.FileSystem"
              mc:Ignorable="d"
 			 d:DataContext="{d:DesignInstance ViewModels:FolderStructureViewModel}">
-    <TreeView ItemsSource="{Binding Drives}">
+    <TreeView ItemsSource="{Binding Drives}" VirtualizingStackPanel.IsVirtualizing="True" VirtualizingStackPanel.VirtualizationMode="Recycling">
         <TreeView.Resources>
-            <HierarchicalDataTemplate DataType="{x:Type FileSystem:FolderViewModel}" ItemsSource="{Binding Folders}">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="{StaticResource Folder}" Width="15" Height="15"/>
-                    <TextBlock Text="{Binding DisplayName}"/>
-                </StackPanel>
-            </HierarchicalDataTemplate>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="FileSystem/DriveView.xaml"/>
+                    <ResourceDictionary Source="FileSystem/FolderView.xaml"/>
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
         </TreeView.Resources>
+
+        <TreeView.ItemContainerStyle>
+            <Style TargetType="TreeViewItem" BasedOn="{StaticResource {x:Type TreeViewItem}}">
+                <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}"/>
+            </Style>
+        </TreeView.ItemContainerStyle>
     </TreeView>
 </UserControl>

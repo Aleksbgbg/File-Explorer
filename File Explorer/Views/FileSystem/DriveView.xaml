@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:FileSystem="clr-namespace:FileExplorer.ViewModels.FileSystem">
+    <HierarchicalDataTemplate DataType="{x:Type FileSystem:DriveViewModel}" ItemsSource="{Binding Folders}">
+        <StackPanel Orientation="Horizontal">
+            <Image Source="{StaticResource Drive}" Width="20" Height="20"/>
+            <TextBlock Text="{Binding DisplayName}" Margin="5, 0"/>
+        </StackPanel>
+    </HierarchicalDataTemplate>
+</ResourceDictionary>

@@ -10,9 +10,9 @@
     {
         public FolderStructureViewModel(IFileSystemService fileSystemService)
         {
-            Drives = new BindableCollection<IFolderViewModel>(fileSystemService.GetRootDrives());
+            Drives = new BindableCollection<IDriveViewModel>(fileSystemService.GetDrives());
         }
 
-        public IObservableCollection<IFolderViewModel> Drives { get; }
+        public IObservableCollection<IDriveViewModel> Drives { get; }
     }
 }

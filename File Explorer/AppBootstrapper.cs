@@ -6,6 +6,8 @@
 
     using Caliburn.Micro;
 
+    using FileExplorer.Factories;
+    using FileExplorer.Factories.Interfaces;
     using FileExplorer.Services;
     using FileExplorer.Services.Interfaces;
     using FileExplorer.ViewModels;
@@ -26,6 +28,7 @@
             // Register Services
             container.Singleton<IWindowManager, WindowManager>();
             container.Singleton<IFileSystemService, FileSystemService>();
+            container.Singleton<IFolderFactory, FolderFactory>();
 
             // Register ViewModels
             container.Singleton<IShellViewModel, ShellViewModel>();
@@ -33,7 +36,7 @@
             container.Singleton<IFolderStructureViewModel, FolderStructureViewModel>();
 
             // FileSystem ViewModels
-            container.PerRequest<IFileViewModel, FileViewModel>();
+            container.PerRequest<IDriveViewModel, DriveViewModel>();
             container.PerRequest<IFolderViewModel, FolderViewModel>();
         }
 

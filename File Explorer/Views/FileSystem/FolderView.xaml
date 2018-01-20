@@ -1,0 +1,28 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:FileSystem="clr-namespace:FileExplorer.ViewModels.FileSystem">
+    <HierarchicalDataTemplate DataType="{x:Type FileSystem:FolderViewModel}" ItemsSource="{Binding Folders}">
+        <StackPanel Orientation="Horizontal">
+            <Image Width="20" Height="20">
+                <Image.Style>
+                    <Style TargetType="Image" BasedOn="{StaticResource {x:Type Image}}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsExpanded}" Value="True">
+                                <Setter Property="Source" Value="{StaticResource FolderOpen}"/>
+                            </DataTrigger>
+
+                            <DataTrigger Binding="{Binding IsExpanded}" Value="False">
+                                <Setter Property="Source" Value="{StaticResource Folder}"/>
+                            </DataTrigger>
+
+                            <DataTrigger Binding="{Binding Folder.IsHidden}" Value="True">
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <TextBlock Text="{Binding DisplayName}" Margin="5, 0"/>
+        </StackPanel>
+    </HierarchicalDataTemplate>
+</ResourceDictionary>
