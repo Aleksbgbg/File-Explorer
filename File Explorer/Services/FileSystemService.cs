@@ -20,7 +20,7 @@
 
         public IEnumerable<IDriveViewModel> GetDrives()
         {
-            return DriveInfo.GetDrives().Select(folderFactory.MakeDrive);
+            return DriveInfo.GetDrives().Where(drive => drive.IsReady && drive.VolumeLabel != null).Select(folderFactory.MakeDrive);
         }
 
         public IEnumerable<IFolderViewModel> GetFolders(string path)
